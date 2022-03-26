@@ -1,5 +1,7 @@
+from tkinter import *
+window=Tk()
+# add widgets here
 
-#Test comment
-#beep beep
-
-#testingg
+window.title('Hello Python')
+window.geometry("300x200+10+20")
+window.mainloop()
