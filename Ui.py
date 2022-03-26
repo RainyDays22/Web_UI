@@ -1,13 +1,25 @@
 from turtle import *
+import tkinter as tk
 screen=Screen()
 # add widgets here
 
 class Question:
+
+    class Button:
+        def __init__(self):
+            self.text = None
+            self.image = None
+            self.bg = 'blue'
+            self.fg = 'purple'
+            self.command = None
+
     def __init__(self):
-        screen = Screen()
+        self.window = tk.Window()
+        self.button = tk.Button(self.window, )
 
     def title(self, title_text):
-        lbl = Label(screen, text = str(title_text), )
+        lbl = Label(self.window, text = str(title_text)) #add fg, font
+        #lbl.place(x= , y=)
         return lbl
 
     def option1(self, image, text):
