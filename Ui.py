@@ -12,9 +12,9 @@ import urllib.request
 from PIL import ImageTk, Image
 
 
-questions = {0:['question 1 title!', 'rats', 'cats', 'hats', 'mats'],
-            1:['question 2 title!', 'option 1', 'option 2', 'option 3', 'option 4'],
-            2:['question 3 title!', 'option 1', 'option 2', 'option 3', 'option 4']}
+questions = {0:['question 1 title!', 'rats', 'cats', 'hats', 'mats', 'Exit Fullscreen'],
+            1:['question 2 title!', 'option 1', 'option 2', 'option 3', 'option 4','Exit Fullscreen'],
+            2:['question 3 title!', 'option 1', 'option 2', 'option 3', 'option 4','Exit Fullscreen']}
 
 
 class Quiz:
@@ -30,7 +30,7 @@ class Quiz:
         self.counter = 0
         self.finish = win.attributes('-fullscreen', True)
         exit_btn = Button(self.frame, text="Exit Fullscreen", command=self.exit)
-        exit_btn = exit_btn.pack(side=TOP, anchor=NW)
+        exit_btn = exit_btn.pack(side=TOP)
         
     def exit(self):
         sys.exit()
@@ -54,7 +54,7 @@ class Quiz:
     def add_D(self):
         self.answers.append('D')
     
-    def question(self, title, option1, option2, option3, option4):
+    def question(self, title, option1, option2, option3, option4, option5):
         title = Label(self.frame, text = title)
         title.pack()
         option1 = Button(self.frame, text = option1, command = lambda:[self.add_A(), self.next_question()])
@@ -65,7 +65,8 @@ class Quiz:
         option3.pack()
         option4 = Button(self.frame, text = option4, command = lambda:[self.add_D(), self.next_question()])
         option4.pack()
-        print('we are here')
+        option5 = Button(self.frame, text = option5, command=self.exit)
+        option5.pack(side=TOP)
         print(self.track_answers())
 
     def evaluate(self):
@@ -96,6 +97,8 @@ class Quiz:
         result = self.evaluate()
         title = Label(text = 'You are a ' + str(result) + '!')
         title.pack()
+        exit_btn = Button(self.frame, text="Exit Fullscreen", command=self.exit)
+        exit_btn = exit_btn.pack(side=TOP)
         if result == 'squirrel':
             urllib.request.urlretrieve('https://i.imgur.com/PEIFopL.jpg', 'squirrel.jpeg')
             squirrel_pic = Image.open('squirrel.jpeg')
@@ -139,7 +142,7 @@ class Quiz:
         q = self.counter
         if self.counter < len(questions):
             self.counter += 1
-            self.question(questions[q][0], questions[q][1], questions[q][2], questions[q][3], questions[q][4])
+            self.question(questions[q][0], questions[q][1], questions[q][2], questions[q][3], questions[q][4], questions[q][5])
         else:
             print('ending')
             self.end()
