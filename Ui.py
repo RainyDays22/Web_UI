@@ -1,5 +1,6 @@
 #import turtle
 from tkinter import *
+import sys
 # add widgets here
 #root = tk.Tk()
 #canvas = tk.Canvas(root)
@@ -27,6 +28,13 @@ class Quiz:
         enter_btn.pack()
         self.answers = []
         self.counter = 0
+        self.finish = win.attributes('-fullscreen', True)
+        exit_btn = Button(self.frame, text="Exit Fullscreen", command=self.exit)
+        exit_btn = exit_btn.pack(side=TOP, anchor=NW)
+        
+    def exit(self):
+        sys.exit()
+       
 
     def question_counter(self):
         return self.counter
