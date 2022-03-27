@@ -7,6 +7,7 @@ from tkinter import *
 #canvas.pack(side=tk.LEFT)
 #screen = turtle.TurtleScreen(canvas)
 #screen.bgcolor("cyan")
+import urllib.request
 from PIL import ImageTk, Image
 
 
@@ -94,6 +95,7 @@ class Quiz:
         if result == 'Swem therapy dog':
             pass
         if result == 'blue heron':
+            urllib.request.urlretrieve('https://www.wm.edu/as/biology/planttour/_photosets/crimdell/heron.jpg', 'heron.jpeg')
             heron_pic = Image.open('heron.jpeg')
             heron = ImageTk.PhotoImage(heron_pic)
             label = Label(image = heron)
