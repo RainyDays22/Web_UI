@@ -29,13 +29,13 @@ class Quiz:
     def question(self, title, option1, option2, option3, option4):
         self.title = Label(self.frame, text = title)
         self.title.pack()
-        self.option1 = Button(self.frame, text = option1, command = self.track_answers('A'))
+        self.option1 = Button(self.frame, text = option1, height = 20, width = 20, command = self.track_answers('A'))
         self.option1.pack()
-        self.option2 = Button(self.frame, text = option2, command = self.track_answers('B'))
+        self.option2 = Button(self.frame, text = option2, height = 20, width = 20, command = self.track_answers('B'))
         self.option2.pack()
-        self.option3 = Button(self.frame, text = option3, command = self.track_answers('C'))
+        self.option3 = Button(self.frame, text = option3, height = 20, width = 20, command = self.track_answers('C'))
         self.option3.pack()
-        self.option4 = Button(self.frame, text = option4, command = self.track_answers('D'))
+        self.option4 = Button(self.frame, text = option4, height = 20, width = 20, command = self.track_answers('D'))
         self.option4.pack()
 
     def next_question(self):
