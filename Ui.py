@@ -1,29 +1,51 @@
-from turtle import *
+import turtle
 import tkinter as tk
-screen=Screen()
 # add widgets here
+root = tk.Tk()
+canvas = tk.Canvas(root)
+canvas.config(width=600, height=200)
+canvas.pack(side=tk.LEFT)
+screen = turtle.TurtleScreen(canvas)
+screen.bgcolor("cyan")
 
 class Question:
 
     class Button:
-        def __init__(self):
-            self.text = None
-            self.image = None
+        def __init__(self, image, text):
+            self.text = text
+            self.image = image
             self.bg = 'blue'
             self.fg = 'purple'
             self.command = None
+            return self
 
     def __init__(self):
-        self.window = tk.Window()
-        self.button = tk.Button(self.window, )
+        
+        #self.button = tk.Button(self.window, )
+        #return(self)
+        pass
+    
+    def window(self):
+        root = tk.Tk()
+        canvas = tk.Canvas(root)
+        canvas.config(width=600, height=200)
+        canvas.pack(side=tk.LEFT)
+        screen = turtle.TurtleScreen(canvas)
+        screen.bgcolor("cyan")
+    
+        return(self)
 
     def title(self, title_text):
-        lbl = Label(self.window, text = str(title_text)) #add fg, font
+        #lbl = Label(self.window, text = str(title_text)) #add fg, font
         #lbl.place(x= , y=)
-        return lbl
-
-    def option1(self, image, text):
+        #return lbl
         pass
+
+    def option1(self):
+        new_button = self.Button(None, 'Press me')
+        button = tk.Button(new_button)
+        button.pack()
+        return self
 
     def option2(self, image, text):
         pass
@@ -36,9 +58,10 @@ class Question:
 
     
 
-window.title('Hello Python')
-window.geometry("300x200+10+20")
-window.mainloop()
 #https://www.tutorialsteacher.com/python/create-gui-using-tkinter-python
 
 #https://stackoverflow.com/questions/44634947/how-to-set-a-turtle-to-a-turtle-screen/44639041#44639041
+
+root.mainloop()
+quiz = Question()
+print(quiz.option1())
