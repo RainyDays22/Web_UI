@@ -1,0 +1,20 @@
+from tkinter import *
+#window=Tk()
+#btn=Button(window, text="This is Button widget", fg='blue')
+#btn.place(x=80, y=100)
+#window.title('Hello Python')
+#window.geometry("300x200+10+10")
+#window.mainloop()
+
+
+def Question(button_text, question_title):
+    window = Tk()
+    option1 = Button(window, text = button_text, command = )
+    option1.place(x=0, y=0)
+    window.title(question_title)
+    window.mainloop()
+
+q1 = Question('this is a button!', 'question 1')
+q2 = Question('this is another button', 'question 2')
+print(q1)
+print(q2)

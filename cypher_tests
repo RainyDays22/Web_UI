@@ -1,40 +1,59 @@
+#import turtle
 from tkinter import *
-class MyWindow:
-    def __init__(self, win):
-        self.lbl1=Label(win, text='First number')
-        self.lbl2=Label(win, text='Second number')
-        self.lbl3=Label(win, text='Result')
-        self.t1=Entry(bd=3)
-        self.t2=Entry()
-        self.t3=Entry()
-        self.btn1 = Button(win, text='Add')
-        self.btn2=Button(win, text='Subtract')
-        self.lbl1.place(x=100, y=50)
-        self.t1.place(x=200, y=50)
-        self.lbl2.place(x=100, y=100)
-        self.t2.place(x=200, y=100)
-        self.b1=Button(win, text='Add', command=self.add)
-        self.b2=Button(win, text='Subtract')
-        self.b2.bind('<Button-1>', self.sub)
-        self.b1.place(x=100, y=150)
-        self.b2.place(x=200, y=150)
-        self.lbl3.place(x=100, y=200)
-        self.t3.place(x=200, y=200)
-    def add(self):
-        self.t3.delete(0, 'end')
-        num1=int(self.t1.get())
-        num2=int(self.t2.get())
-        result=num1+num2
-        self.t3.insert(END, str(result))
-    def sub(self, event):
-        self.t3.delete(0, 'end')
-        num1=int(self.t1.get())
-        num2=int(self.t2.get())
-        result=num1-num2
-        self.t3.insert(END, str(result))
+# add widgets here
+#root = tk.Tk()
+#canvas = tk.Canvas(root)
+#canvas.config(width=600, height=200)
+#canvas.pack(side=tk.LEFT)
+#screen = turtle.TurtleScreen(canvas)
+#screen.bgcolor("cyan")
 
-window=Tk()
-mywin=MyWindow(window)
-window.title('Hello Python')
-window.geometry("400x300+10+10")
+questions = {1:['question 1 title!', 'rats', 'cats', 'hats', 'mats'],
+            2:['question 2 title!', 'option 1', 'option 2', 'option 3', 'option 4']}
+print(questions[1][0],questions[1][1])
+
+class Quiz:
+
+    def __init__(self, win):
+        self.frame = Frame(win)
+        self.frame.pack()
+        self.lbl = Label(self.frame, text = 'What W&M animal are you?')
+        self.lbl.pack()
+        self.enter_btn = Button(self.frame, text="Enter quiz", command=self.next_question)
+        self.enter_btn.pack()
+        self.answers = []
+
+    def track_answers(self, text):
+        self.answers.append(text)
+    
+    def question(self, title, option1, option2, option3, option4):
+        self.title = Label(self.frame, text = title)
+        self.title.pack()
+        self.option1 = Button(self.frame, text = option1, command = self.track_answers('A'))
+        self.option1.pack()
+        self.option2 = Button(self.frame, text = option2, command = self.track_answers('B'))
+        self.option2.pack()
+        self.option3 = Button(self.frame, text = option3, command = self.track_answers('C'))
+        self.option3.pack()
+        self.option4 = Button(self.frame, text = option4, command = self.track_answers('D'))
+        self.option4.pack()
+
+    def next_question(self):
+        for i in self.frame.winfo_children():
+            i.destroy()
+        self.question(questions[1][0], questions[1][1], questions[1][2], questions[1][3], questions[1][4])
+
+    
+
+#https://www.tutorialsteacher.com/python/create-gui-using-tkinter-python
+
+#https://stackoverflow.com/questions/44634947/how-to-set-a-turtle-to-a-turtle-screen/44639041#44639041
+
+#root.mainloop()
+window = Tk()
+window.title('Quiz')
+window.geometry('400x300')
+quiz = Quiz(window)
+#quiz.option1('this is a button!')
 window.mainloop()
+#print(quiz)
